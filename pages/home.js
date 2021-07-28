@@ -1,9 +1,10 @@
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useAuth } from '../context'
+import Link from 'next/link'
 
 export default function LoggedIn() {
-  const { authUser, loading } = useAuth()
+  const { authUser, loading, signOut } = useAuth()
   const router = useRouter()
 
   useEffect(() => {
@@ -17,9 +18,9 @@ export default function LoggedIn() {
     <main className='flex flex-col items-center justify-center w-full flex-1 px-20 text-center'>
       <h1 className='text-7xl'>Logged In</h1>
       <div className='flex py-10'>
-        <Link href='/home'>
-          <a className='text-5xl'>Logged In</a>
-        </Link>
+        <button onClick={signOut} className='border rounded py-4 px-2 text-2xl'>
+          Sign Out
+        </button>
       </div>
     </main>
   )
